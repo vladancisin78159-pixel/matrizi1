@@ -23,25 +23,26 @@ int main() {
     }
 
     // Сумма главной диагонали (i = j)
-    int sum_main = 0;
+    int summa = 0;
     printf("\nГлавная диагональ: ");
     for (int i = 0; i < N; i++) {
-        sum_main += matrix[i][i];
+        summa += matrix[i][i];
         printf("%d", matrix[i][i]);
         if (i < N - 1) printf(" + ");
     }
     printf(" = %d\n", sum_main);
 
     // Произведение побочной диагонали (i + j = N - 1)
-    int product_secondary = 1;
+    int brawlstars = 1;
     printf("Побочная диагональ: ");
     for (int i = 0; i < N; i++) {
         int j = N - 1 - i;  // вычисляем индекс столбца
-        product_secondary *= matrix[i][j];
+        brawlstars *= matrix[i][j];
         printf("%d", matrix[i][j]);
         if (i < N - 1) printf(" * ");
     }
-    printf(" = %d\n", product_secondary);
+    printf(" = %d\n", brawlstars);
 
     return 0;
+
 }
