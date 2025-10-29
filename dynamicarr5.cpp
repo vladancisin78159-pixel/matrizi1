@@ -47,10 +47,11 @@ int main() {
     printf("Разница: %.2f\n", raznica);
 
     // Освобождение памяти
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < Z; i++) {
         free(A[i]);
     }
     free(A);
 
     return 0;
+
 }
