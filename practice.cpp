@@ -86,15 +86,15 @@ double** inverse(double** m, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             double** sub = create_matrix(n - 1); // Создаем минор без i-й строки и j-го столбца
-            int stroki = 0;
+            int rows = 0;
             for (int x = 0; x < n; x++) { // Проходим по всем строкам исходной матрицы
                 if (x == i) continue;  // Пропускаем i-ю строку
-                int stolbec = 0; // Счетчик столбцов в миноре
+                int col = 0; // Счетчик столбцов в миноре
                 for (int y = 0; y < n; y++) {
                     if (y == j) continue;
-                    sub[stroki][stolbec++] = m[x][y]; // Копируем элемент в минор
+                    sub[rows][col++] = m[x][y]; // Копируем элемент в минор
                 }
-                stroki++;
+                rows++;
             }
             // Вычисляем алгебраическое дополнение A(i,j)
             double sign1;
@@ -186,4 +186,5 @@ int main() {
     free(B);
 
     return 0;
+
 }
