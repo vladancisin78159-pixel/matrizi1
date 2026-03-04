@@ -20,8 +20,10 @@ int main() {
             cout << arr[i];
             return 0;
         }
+        seen.insert(arr[i]);
     }
 
     cout << "none";
     return 0;
+
 }
