@@ -1,0 +1,3 @@
+﻿  AnalyzTexta.cpp
+C:\Users\user\source\repos\AnalyzTexta\AnalyzTexta\AnalyzTexta.cpp(127,22): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  AnalyzTexta.vcxproj -> C:\Users\user\source\repos\AnalyzTexta\x64\Debug\AnalyzTexta.exe
