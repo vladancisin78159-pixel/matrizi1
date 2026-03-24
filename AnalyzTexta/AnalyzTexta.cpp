@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -11,7 +11,13 @@ using namespace std;
 // Перевод в нижний регистр еу
 string toLower(string s) {
     for (int i = 0; i < s.length(); i++) {
-        s[i] = tolower(s[i]);
+        unsigned char c = s[i];
+        if (c >= 'A' && c <= 'Z') {
+            s[i] = c + 32;
+        }
+        else if (c >= 192 && c <= 223) {
+            s[i] = c + 32;
+        }
     }
     return s;
 }
@@ -20,9 +26,9 @@ string toLower(string s) {
 string cleanWord(string w) {
     string res = "";
     for (int i = 0; i < w.length(); i++) {
-        char c = w[i];
+        unsigned char c = w[i];
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
-            (c >= 'а' && c <= 'я') || (c >= 'А' && c <= 'Я') ||
+            (c >= 192 && c <= 255) ||
             (c >= '0' && c <= '9') || c == '-') {
             res += c;
         }
@@ -30,35 +36,43 @@ string cleanWord(string w) {
     return res;
 }
 
-// Разбиение строки на слова
+// Разбиение строки на слова еу
 vector<string> extractWords(string line) {
     vector<string> words; //слова
     string word = ""; //строка
 
     for (int i = 0; i < line.length(); i++) {
-        char c = line[i];
+        unsigned char c = line[i];
 
+        // Проверяем, является ли символ частью слова еу
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
-            (c >= 'а' && c <= 'я') || (c >= 'А' && c <= 'Я') ||
+            (c >= 192 && c <= 255) || 
             (c >= '0' && c <= '9') || c == '-') {
             word += c;
         }
         else {
             if (word.length() > 0) {
-                words.push_back(toLower(word)); // Добавляем слово в вектор переведя в нижний регистр
+                // Сначала очищаем от знаков препинания, потом переводим в нижний регистр еу
+                string cleaned = cleanWord(word);
+                if (cleaned.length() > 0) {
+                    words.push_back(toLower(cleaned));
+                }
                 word = "";
             }
         }
     }
 
     if (word.length() > 0) {
-        words.push_back(toLower(word));
+        string cleaned = cleanWord(word);
+        if (cleaned.length() > 0) {
+            words.push_back(toLower(cleaned));
+        }
     }
 
     return words;
 }
 
-// Подсчет сколько раз слово встречается
+// Подсчет сколько раз слово встречается еу
 int countWord(vector<string>& all, string target) {
     int cnt = 0;
     for (int i = 0; i < all.size(); i++) {
@@ -89,7 +103,7 @@ int main() {
     while (getline(file, line)) {
         vector<string> w = extractWords(line);
         for (int i = 0; i < w.size(); i++) {
-            allWords.push_back(w[i]); //добавляем все слова в общие
+            allWords.push_back(w[i]); //добавляем все слова в общие еу
         }
     }
 
@@ -97,10 +111,10 @@ int main() {
 
     cout << "Всего слов: " << allWords.size() << endl;
 
-    // Уникальные слова
+    // Уникальные слова еуууу
     vector<string> unique;
     for (int i = 0; i < allWords.size(); i++) {
-        bool found = false; // флаг найдено ли слово
+        bool found = false; // флаг найдено ли слово еу
         for (int j = 0; j < unique.size(); j++) {
             if (unique[j] == allWords[i]) {
                 found = true;
@@ -115,7 +129,7 @@ int main() {
     sort(unique.begin(), unique.end());
 
     string word;
-    while (true) { //многократный поиск слов
+    while (true) { //многократный поиск слов еу
         cout << "\nВведите слово (exit - выход): ";
         cin >> word;
 
@@ -123,7 +137,7 @@ int main() {
 
         string low = toLower(word);
 
-        // Бинарный поиск
+        // Бинарный поиск еу еу еу еу
         int L = 0, R = unique.size() - 1;
         bool ok = false;
 
