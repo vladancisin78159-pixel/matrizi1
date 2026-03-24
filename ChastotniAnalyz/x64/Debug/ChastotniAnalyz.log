@@ -1,0 +1,3 @@
+﻿  ChastotniAnalyz.cpp
+C:\Users\user\source\repos\ChastotniAnalyz\ChastotniAnalyz\ChastotniAnalyz.cpp(129,16): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  ChastotniAnalyz.vcxproj -> C:\Users\user\source\repos\ChastotniAnalyz\x64\Debug\ChastotniAnalyz.exe
