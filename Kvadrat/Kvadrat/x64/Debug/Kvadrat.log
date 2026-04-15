@@ -1,0 +1,3 @@
+﻿  Kvadrat.cpp
+C:\Users\user\source\repos\Kvadrat\Kvadrat\Kvadrat.cpp(7,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Kvadrat.vcxproj -> C:\Users\user\source\repos\Kvadrat\x64\Debug\Kvadrat.exe
